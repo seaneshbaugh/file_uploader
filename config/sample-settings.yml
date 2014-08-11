@@ -1,0 +1,7 @@
+development:
+  upload_directory: "/Users/me/uploads"
+  default_encoding: "utf-8"
+
+production:
+  upload_directory: "E:/uploads"
+  default_encoding: "utf-8"
