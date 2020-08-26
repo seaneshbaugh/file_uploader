@@ -8,4 +8,4 @@ Just a simple file uploader built with Sinatra. Handy when you don't have a USB 
 
 ## Usage
 
-    $ rackup -p 9000
+    $ bundle exec rackup -o "0.0.0.0" -p 9000
