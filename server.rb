@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FileUploader < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
@@ -29,7 +31,7 @@ class FileUploader < Sinatra::Base
 
       content_type :json
 
-      '{ status: 400, message: "No file uploaded." }'
+      '{ "status": 400, "message": "No file uploaded." }'
     end
 
     current_time = Time.now
