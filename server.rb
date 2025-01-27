@@ -34,9 +34,15 @@ class FileUploader < Sinatra::Base
       '{ "status": 400, "message": "No file uploaded." }'
     end
 
-    current_time = Time.now
+    file_path = File.join(settings.upload_directory, file_name)
 
-    File.open(File.join(settings.upload_directory, "#{"#{current_time.to_i}#{current_time.usec}".ljust(16, '0')}-#{file_name}"), 'wb') do |f|
+    if File.exist?(file_path)
+      current_time = Time.now
+
+      file_path = File.join(settings.upload_directory, "#{"#{current_time.to_i}#{current_time.usec}".ljust(16, '0')}-#{file_name}")
+    end
+
+     File.open(file_path, 'wb') do |f|
       f.write file.read
     end
 
