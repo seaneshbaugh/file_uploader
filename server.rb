@@ -42,8 +42,12 @@ class FileUploader < Sinatra::Base
       file_path = File.join(settings.upload_directory, "#{"#{current_time.to_i}#{current_time.usec}".ljust(16, '0')}-#{file_name}")
     end
 
-     File.open(file_path, 'wb') do |f|
+    File.open(file_path, 'wb') do |f|
       f.write file.read
+    end
+
+    File.open(file_path, 'wb') do |output|
+      IO.copy_stream(file, output)
     end
 
     status 200
